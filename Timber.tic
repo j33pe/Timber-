@@ -1,0 +1,48 @@
+-- title:   Timber!
+-- author:  jeeph
+-- desc:    slice wood
+-- site:    https://github.com/j33pe/Timber-/new/main
+-- license: No License
+-- version: 0.01a
+-- script:  lua
+
+pd={
+
+coins=0,
+wood=0,
+
+
+
+}
+
+s=257
+x=12
+y=10
+r=1
+speed=1/8
+function TIC()
+ mx,my,l=mouse()
+	if key(23) and mget(x,y)~=0 then y=y-speed s=258 end
+	if key(19) and mget(x,y+1)~=0 then y=y+speed s=257 end
+	if key(1) and mget(x,y)~=0 then x=x-speed r=1 end
+	if key(4) and mget(x+1,y)~=0 then x=x+speed r=0 end
+ if l and mget(x,y)==136 then mset(x,y,1) pd.wood=pd.wood+10 end
+ if keyp(17,60,6) and pd.wood>=5 then pd.coins=pd.coins+pd.wood*3 pd.wood=0 end
+	for i=0,6000 do
+	 t=math.random(135,136)
+		rt=math.random(9)
+		xt=math.random(240)
+		yt=math.random(136)
+	
+	end
+	map()
+	spr(s,x*8,y*8,1,1,r)
+ spr(273,1,11,1,1)
+ print(pd.coins,12,12,12)
+ spr(112,1,2,1,1)
+ print(pd.wood,12,2,12)
+
+ if mget(x,y)==0 and pd.coins>=5 and l then mset(x,y,1)  pd.coins=pd.coins-5 end
+	if mget(xt,yt)==1 and time(rt) then mset(xt,yt,t) end
+
+end
